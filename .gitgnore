@@ -1,6 +1,6 @@
 .DS_Store
 *.pyc
-*.csv
-*.json
-*.txt
+/scripts/*.csv
+/scripts/*.json
+/scripts/*.txt
 
