@@ -27,17 +27,20 @@ def retrieve_links(input_file):
 					# Slicing done so that local path is not considered absolute 
 					# i.e. /static/<file_name> would be considered absolute, hence
 					# removing '/' will enable to join static folder to directory
-					link = check_static_folder(os.path.join(directory,a['href'][1:]))				
+					link = check_static_folder(os.path.join(directory,a['href'][1:]))	
+					if link is not None:
+						result[input_file].append(link)	
+						print result		
 				else:
 					link = check_url(a['href'])
-				if link is not None:
-					result[input_file].append(link)
+					if link is not None:
+						result[input_file].append(link)
 			for a in soup.find_all('img'):
 				if a['src'].startswith('/static'):
 					# Slicing done so that local path is not considered absolute 
 					# i.e. /static/<file_name> would be considered absolute, hence
 					# removing '/' will enable to join static folder to directory
-					link = check_static_folder(os.path.join(directory,a['href'][1:]))				
+					link = check_static_folder(os.path.join(directory,a['src'][1:]))				
 					if link is not None:
 						result[input_file].append(link)
 			return result
@@ -107,8 +110,10 @@ def write_to_csv(csv_file, result):
 	'''
 	Write result to csv file
 	'''
+
 	for key,value in result.iteritems():
 		for index in value:
+			#print key, index['link'],index['status_code'],index['status']
 			csv_file.writerow([key,index['link'],index['status_code'],index['status']])
 
 def write_to_json(json_file, result):
