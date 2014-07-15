@@ -47,32 +47,6 @@ def retrieve_links(input_file):
 	except:
 		pass
 
-# def check_href(soup, result):
-# 	global directory
-# 	for a in soup.find_all('a', href=True):
-# 		if a['href'].startswith('/static'):
-# 			# Slicing done so that local path is not considered absolute 
-# 			# i.e. /static/<file_name> would be considered absolute, hence
-# 			# removing '/' will enable to join static folder to directory
-# 			link = check_static_folder(os.path.join(directory,a['href'][1:]))				
-# 		else:
-# 			link = check_url(a['href'])
-# 		if link is not None:
-# 			result[input_file].append(link)
-# def check_src(soup, result):
-# 	'''
-# 	Extracts src attributes from files
-# 	'''
-# 	global directory
-# 	for a in soup.find_all('img'):
-# 		if a['src'].startswith('/static'):
-# 			# Slicing done so that local path is not considered absolute 
-# 			# i.e. /static/<file_name> would be considered absolute, hence
-# 			# removing '/' will enable to join static folder to directory
-# 			link = check_static_folder(os.path.join(directory,a['href'][1:]))				
-# 			if link is not None:
-# 				result[input_file].append(link)
-
 def check_static_folder(link):
 	'''
 	Checks if file exists in static folder
