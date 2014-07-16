@@ -65,7 +65,7 @@ def check_url(link):
 	result = {}
 	r = requests.head(link)
 	#print link, r.status_code
-	if r.status_code != 200:
+	if r.status_code != 200 and r.status_code in [301,302,404]:
 		result['link'] = link
 		result['status_code'] = r.status_code
 		result['status'] = r.reason
