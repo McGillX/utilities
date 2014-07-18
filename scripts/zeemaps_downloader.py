@@ -85,6 +85,7 @@ def main():
 	args = define_arguments_parser()
 	csv_file_exists(args[0])
 	assure_directory_exists(args[1])
+	#data = get_csv_reader_object(args[0])
 	extract_and_download_images(args[0], args[1])
 
 if __name__ == '__main__':
