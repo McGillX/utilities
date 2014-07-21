@@ -21,15 +21,18 @@ class ZeemapsDownloaderTest(unittest.TestCase):
 		test_url = 'http://www.divched.org/'
 		self.assertEquals(broken_link_detector.check_url(test_url)['status_code'], 404)
 
-	# def test_check_static_folder_None(self):
-	# 	test_static_file = os.path.abspath(os.path.join(self.directory,'/static/CHEM181x_W01_L02_target_answer.png'))
-	# 	print test_static_file
-	# 	self.assertTrue(os.path.exists(test_static_file))
+	def test_check_static_folder_None(self):
+		'''
+		Checks if file is in static folder
+		'''
+		self.assertEquals(broken_link_detector.check_static_folder(self.directory,'/static/CHEM181x_W01_L02_target_answer.png'), None)
 
 
 	def test_check_static_folder_NA(self):
-		test_static_file = os.path.join(self.directory,'/static/c5f7240cf6d84cd4910ae5bc6d376b92/')
-		self.assertEquals(broken_link_detector.check_static_folder(test_static_file)['status_code'], 'NA')
+		'''
+		Checks if file not in static folder
+		'''
+		self.assertEquals(broken_link_detector.check_static_folder(self.directory,'/static/c5f7240cf6d84cd4910ae5bc6d376b92/')['status_code'], 'NA')
 	
 if __name__ == '__main__':
 	unittest.main()
