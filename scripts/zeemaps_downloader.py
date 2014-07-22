@@ -20,14 +20,13 @@ def extract_and_download_images(csv_file, directory):
 		reader.next()
 		for index,row in enumerate(reader):
 			if row[IMAGE_URL_COLUMN]:
-				#print 'http:' + urllib.pathname2url(row[8])
 				extension = os.path.splitext(row[IMAGE_URL_COLUMN])[1]
 				image_name = rename_image(row, extension, index)
+				# Some URLs start with http or https and some do not
 				if row[IMAGE_URL_COLUMN].startswith('http'):
 					image_url = row[IMAGE_URL_COLUMN]
 				else:
 					image_url = 'http:' + urllib.pathname2url(row[IMAGE_URL_COLUMN])
-				#print os.path.join(directory, image_name)
 				try:
 					urllib.urlretrieve(image_url, os.path.join(directory, image_name))
 				except:
