@@ -1,6 +1,0 @@
-.DS_Store
-*.pyc
-./scripts/*.csv
-./scripts/*.json
-./scripts/*.txt
-
