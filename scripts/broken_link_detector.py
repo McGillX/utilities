@@ -23,15 +23,18 @@ def retrieve_links(input_file):
 			result = defaultdict(list)
 			global directory
 			for a in soup.find_all('a', href=True):
+				# Link to static files in href attribute
 				if a['href'].startswith('/static'):
 					#link = check_static_folder(os.path.join(directory,a['href'][1:]))	
 					link = check_static_folder(directory,a['href'])	
 					if link is not None:
 						result[input_file].append(link)	
+				# Link to URL in href attribute
 				else:
 					link = check_url(a['href'])
 					if link is not None:
 						result[input_file].append(link)
+			# Link to images in static folder
 			for a in soup.find_all('img'):
 				if a['src'].startswith('/static'):
 					#link = check_static_folder(os.path.join(directory,a['src'][1:]))
@@ -41,17 +44,6 @@ def retrieve_links(input_file):
 			return result
 	except:
 		pass
-
-# def check_static_folder(link):
-# 	'''
-# 	Checks if file exists in static folder
-# 	'''
-# 	result = {}
-# 	if not os.path.exists(link):
-# 		result['link'] = link
-# 		result['status_code'] = 'NA'
-# 		result['status'] = 'File does not exist'
-# 		return result	
 
 def check_static_folder(link1, link2):
 	'''
@@ -64,7 +56,6 @@ def check_static_folder(link1, link2):
 	r = link_file[-1].replace('_','.')
 	regex = re.compile(r)
 	result = {}
-	#print link1 + link_file[1]
 	if link1[-1] != '/':
 		link1 += '/'
 	for root, dirs, files in os.walk(link1 + 'static'):
@@ -78,7 +69,8 @@ def check_static_folder(link1, link2):
 
 def check_url(link):
 	'''
-	Checks status code of URL
+	Checks status code of URL. Return only broken links which has status codes
+	301, 302, or 404
 	'''
 	result = {}
 	r = requests.head(link)
