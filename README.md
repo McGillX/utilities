@@ -16,5 +16,16 @@ Usage
     python broken_link_detector.py <path_to_folder>
 
 2) **zeemaps_downloader.py**:
+
     python zeemaps_downloader.py <path_to_csv_file> <path_to_output_directory>
     
+Tests
+=====
+
+To run all the tests, under the utilities folder, just do:
+
+    $ python -m unittest discover tests -v
+
+To run individual tests, under the utilities folder,
+
+    $ python -m unittest tests.<module name>
