@@ -14,6 +14,9 @@ Usage
 1) **broken_link_detector.py**:
 
     python broken_link_detector.py <path_to_folder>
+    
+    Note: you need to install beautifulsoup4 in order to run this script
+    http://www.crummy.com/software/BeautifulSoup/bs4/doc/
 
 2) **zeemaps_downloader.py**:
 
