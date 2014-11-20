@@ -15,7 +15,7 @@ Usage
 
     python broken_link_detector.py <path_to_folder>
     
-    Required libraries: beautifulsoup, requests, argparse, os, json, csv, re
+    Note, install the required libraries: beautifulsoup, requests, argparse
 
 2) **zeemaps_downloader.py**:
 
