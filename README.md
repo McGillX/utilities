@@ -7,7 +7,14 @@ List of Scripts
 ============
 1) **broken_link_detector.py**: Detect broken links in course content
 
-2) **zeemaps_downloader.py**: Download images from ZeeMap CSV file which contains path to images in Amazon S3 (public)
+ 
+2) **zeemaps_downloader.py**: 
+    Downloads images from ZeeMap CSV file which contains path to images hosted on Amazon S3 (public)
+    
+To get the ZeeMap CSV:
+* In the navbar click Map
+* Select "Save  As CSV" from the dropdown
+* Go to the admin dashboard of your ZeeMap
 
 Usage
 ==========
